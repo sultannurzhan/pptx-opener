@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPTX Opener</title>
+
+  <!-- JSZip: needed for manual PPTX/xml extraction fallback -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <!-- jQuery: required by pptx2html internally -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- pptx2html: renders PPTX slides to HTML in the browser -->
+  <!-- Switched to local patched version to fix a crash reading bg1 theme variables -->
+  <script src="pptx2html.patched.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>PPTX Opener</h1>
+    <p class="subtitle">Open any PowerPoint file right in your browser — nothing uploaded, everything local.</p>
+  </header>
+
+  <main>
+    <!-- Drop zone / file picker -->
+    <div id="dropzone" class="dropzone">
+      <div class="dropzone-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="8" y="4" width="48" height="56" rx="4"/>
+          <polyline points="40 4 40 20 56 20"/>
+          <line x1="24" y1="32" x2="40" y2="32"/>
+          <line x1="24" y1="40" x2="40" y2="40"/>
+          <line x1="24" y1="48" x2="32" y2="48"/>
+        </svg>
+        <p>Drag &amp; drop a <strong>.pptx</strong> file here</p>
+        <span>— or —</span>
+        <label class="btn-pick" for="fileInput">Choose File</label>
+        <input type="file" id="fileInput" accept=".pptx" hidden />
+      </div>
+    </div>
+
+    <!-- Loading spinner -->
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p>Parsing presentation…</p>
+    </div>
+
+    <!-- Viewer -->
+    <div id="viewer" class="hidden">
+      <div class="toolbar">
+        <button id="btnPrev" class="btn-nav" title="Previous slide">&#8592;</button>
+        <span id="slideCounter" class="slide-counter">1 / 1</span>
+        <button id="btnNext" class="btn-nav" title="Next slide">&#8594;</button>
+        <button id="btnFullscreen" class="btn-action" title="Fullscreen">&#9974;</button>
+        <button id="btnClose" class="btn-action btn-close" title="Close">&#10005; Close</button>
+      </div>
+
+      <div id="slideWrapper" class="slide-wrapper">
+        <!-- pptx2html renders all slides here; we show/hide them -->
+        <div id="slideContainer" class="slide-container"></div>
+      </div>
+
+      <!-- Thumbnail strip: pptx2html can also render thumbs here -->
+      <div id="thumbnailStrip" class="thumbnail-strip"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Files never leave your device &mdash; everything runs locally in your browser.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
