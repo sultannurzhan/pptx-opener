@@ -400,13 +400,22 @@
     var parser = new DOMParser();
     var doc = parser.parseFromString(xmlString, "application/xml");
 
+    function byLocalName(node, localName) {
+      return Array.prototype.slice.call(node.getElementsByTagNameNS("*", localName));
+    }
+
+    function firstByLocalName(node, localName) {
+      var all = node.getElementsByTagNameNS("*", localName);
+      return all.length ? all[0] : null;
+    }
+
     var paragraphs = [];
-    doc.querySelectorAll("p").forEach(function (p) {
+    byLocalName(doc, "p").forEach(function (p) {
       var runs = [];
-      p.querySelectorAll("r").forEach(function (r) {
-        var t = r.querySelector("t");
+      byLocalName(p, "r").forEach(function (r) {
+        var t = firstByLocalName(r, "t");
         if (!t) return;
-        var rPr = r.querySelector("rPr");
+        var rPr = firstByLocalName(r, "rPr");
         runs.push({
           text: t.textContent,
           bold: rPr && (rPr.getAttribute("b") === "1" || rPr.getAttribute("b") === "true"),
