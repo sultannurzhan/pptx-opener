@@ -1,8 +1,8 @@
-# PPTX Opener
+# Nexuslides
 
 A lightweight, 100% client-side tool for viewing PowerPoint (`.pptx`) presentations directly in your browser. 
 
-Unlike many online converters, **PPTX Opener processes everything locally**. Your presentation files never leave your computer, ensuring absolute privacy and security—all without the need for a backend or cloud service.
+Unlike many online converters, **Nexuslides processes everything locally**. Your presentation files never leave your computer, ensuring absolute privacy and security—all without the need for a backend or cloud service.
 
 ## Features
 

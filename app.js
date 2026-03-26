@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────
-   PPTX Opener — app.js
+  Nexuslides — app.js
    Libraries:
      • pptx2html  (global: pptx2html)  renders slides into DOM
      • JSZip                           fallback text extraction
