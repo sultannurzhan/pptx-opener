@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap");
 
 /* Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -268,7 +270,9 @@ main {
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   padding: 1.25rem;
-  overflow: auto;
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
   min-height: 420px;
   display: flex;
   align-items: flex-start;
@@ -282,12 +286,14 @@ main {
   box-shadow: var(--shadow-frame);
   border-radius: 6px;
   overflow: hidden;
-  max-width: 100%;
+  width: 100%;
+  max-width: 800px;
+  min-width: 0;
   background: #fff;
   line-height: normal;
 }
 
-.slide-container > div {
+.slide-container>div {
   transform-origin: top left;
 }
 
@@ -377,6 +383,7 @@ footer {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -421,7 +428,10 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;

@@ -1,0 +1,11 @@
+export const dropzone       = document.getElementById("dropzone");
+export const fileInput      = document.getElementById("fileInput");
+export const loading        = document.getElementById("loading");
+export const viewer         = document.getElementById("viewer");
+export const slideContainer = document.getElementById("slideContainer");
+export const thumbnailStrip = document.getElementById("thumbnailStrip");
+export const slideCounter   = document.getElementById("slideCounter");
+export const btnPrev        = document.getElementById("btnPrev");
+export const btnNext        = document.getElementById("btnNext");
+export const btnClose       = document.getElementById("btnClose");
+export const btnFullscreen  = document.getElementById("btnFullscreen");
