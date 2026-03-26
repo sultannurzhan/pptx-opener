@@ -1,0 +1,13 @@
+# Firebase local/cache/debug
+.firebase/
+firebase-debug.log*
+.firebaserc.local
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# OS/editor
+.DS_Store
+.vscode/
