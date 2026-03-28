@@ -378,6 +378,20 @@ footer {
   background: rgba(255, 255, 255, 0.45);
 }
 
+footer p {
+  margin: 0.2rem 0;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;
