@@ -4332,6 +4332,37 @@ function () {
 /* global btoa, JSZip */
 'use strict';
 
+function escapeHtml(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return String(text).replace(/[&<>"']/g, function (m) {
+    return map[m];
+  });
+}
+
+function sanitizeLinkUrl(url) {
+  if (typeof url !== 'string' && !(url instanceof String)) {
+    return '#';
+  }
+
+  var normalized = String(url).trim();
+
+  if (normalized === '') {
+    return '#';
+  }
+
+  if (/^(https?:|mailto:|tel:)/i.test(normalized)) {
+    return normalized;
+  }
+
+  return '#';
+}
+
 function base64ArrayBuffer(arrayBuff) {
   var buff = new Uint8Array(arrayBuff);
   var text = '';
@@ -4348,18 +4379,6 @@ function extractFileExtension(filename) {
   if (dot === 0 || dot === -1) return '';
   return filename.substr(filename.lastIndexOf('.') + 1);
 }
-/*
-function escapeHtml (text) {
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    '\'': '&#039;'
-  }
-  return text.replace(/[&<>"']/g, m => map[m])
-}
-*/
 
 
 function processPptx() {
@@ -6639,6 +6658,8 @@ function processPptx() {
       }
     }
 
+    var escapedText = escapeHtml(text);
+
     var styleText = 'color:' + getFontColor(node, type, slideMasterTextStyles) + ';font-size:' + getFontSize(node, slideLayoutSpNode, slideMasterSpNode, type, slideMasterTextStyles) + ';font-family:' + getFontType(node, type, slideMasterTextStyles) + ';font-weight:' + getFontBold(node, type, slideMasterTextStyles) + ';font-style:' + getFontItalic(node, type, slideMasterTextStyles) + ';text-decoration:' + getFontDecoration(node, type, slideMasterTextStyles) + ';text-align:' + getTextHorizontalAlign(node, type, slideMasterTextStyles) + ';vertical-align:' + getTextVerticalAlign(node, type, slideMasterTextStyles) + ';'; // ////////////////Amir///////////////
 
     var highlight = getTextByPathList(node, ['a:rPr', 'a:highlight']);
@@ -6664,10 +6685,15 @@ function processPptx() {
     var linkID = getTextByPathList(node, ['a:rPr', 'a:hlinkClick', 'attrs', 'r:id']); // get link colors : TODO
 
     if (linkID !== undefined) {
-      var linkURL = warpObj['slideResObj'][linkID]['target'];
-      return '<span class=\'text-block ' + cssName + '\'><a href=\'' + linkURL + '\' target=\'_blank\'>' + text.replace(/\s/i, '&nbsp;') + '</a></span>';
+      var linkURL = '#';
+
+      if (warpObj['slideResObj'][linkID] !== undefined) {
+        linkURL = sanitizeLinkUrl(warpObj['slideResObj'][linkID]['target']);
+      }
+
+      return '<span class=\'text-block ' + cssName + '\'><a href=\'' + escapeHtml(linkURL) + '\' target=\'_blank\' rel=\'noopener noreferrer\'>' + escapedText.replace(/\s/i, '&nbsp;') + '</a></span>';
     } else {
-      return '<span class=\'text-block ' + cssName + '\'>' + text.replace(/\s/i, '&nbsp;') + '</span>';
+      return '<span class=\'text-block ' + cssName + '\'>' + escapedText.replace(/\s/i, '&nbsp;') + '</span>';
     }
   }
 
