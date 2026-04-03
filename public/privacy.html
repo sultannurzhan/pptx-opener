@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexuslides | Privacy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="privacy">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="index.html">Nexuslides</a>
+      <button id="navToggle" class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+        <a href="index.html" data-nav-page="home">Viewer</a>
+        <a href="how-it-works.html" data-nav-page="how">How It Works</a>
+        <a href="privacy.html" data-nav-page="privacy">Privacy</a>
+        <a href="faq.html" data-nav-page="faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">Privacy First</p>
+      <h1>Your presentations stay on your device</h1>
+      <p class="subtitle">Nexuslides was built to keep slide content local. File processing, parsing, and rendering happen entirely in your browser runtime.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>What stays local</h2>
+      <div class="legal-list">
+        <article class="legal-item">
+          <h3>.pptx binary content</h3>
+          <p>The selected file is read locally via browser APIs and is not uploaded to an application server.</p>
+        </article>
+        <article class="legal-item">
+          <h3>Extracted slide XML and media</h3>
+          <p>OOXML components are unpacked and transformed in-memory inside your tab session.</p>
+        </article>
+        <article class="legal-item">
+          <h3>Rendered slide output</h3>
+          <p>Generated slide nodes are created in the DOM and remain local to your browser environment.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Analytics transparency</h2>
+      <p>Nexuslides includes Firebase Analytics initialization for aggregate product metrics. This does not transmit your uploaded slide file contents.</p>
+      <div class="content-grid">
+        <article class="content-card">
+          <h3>Deck content exclusion</h3>
+          <p>Presentation text, images, and OOXML internals are not intentionally sent as analytics payloads.</p>
+        </article>
+        <article class="content-card">
+          <h3>Operational telemetry</h3>
+          <p>Analytics may include high-level usage events and device/browser metadata per Firebase defaults.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Recommended usage</h2>
+      <p>For highly sensitive environments, run Nexuslides in trusted browsers and review your network and extension policies.</p>
+      <div class="hero-actions">
+        <a class="btn-hero btn-primary" href="index.html">Open Viewer</a>
+        <a class="btn-hero btn-secondary" href="faq.html">Read FAQ</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Privacy by default: local processing with no file upload pipeline.</p>
+    <p>&copy; <span id="year"></span> Nexuslides. Created by <a href="https://github.com/sultannurzhan" target="_blank" rel="noopener">Sultan Takibay</a></p>
+  </footer>
+
+  <script type="module" src="site.js"></script>
+</body>
+</html>

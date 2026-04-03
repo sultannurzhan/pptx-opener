@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexuslides | FAQ</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="faq">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="index.html">Nexuslides</a>
+      <button id="navToggle" class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+        <a href="index.html" data-nav-page="home">Viewer</a>
+        <a href="how-it-works.html" data-nav-page="how">How It Works</a>
+        <a href="privacy.html" data-nav-page="privacy">Privacy</a>
+        <a href="faq.html" data-nav-page="faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">Frequently Asked Questions</p>
+      <h1>Quick answers about compatibility, behavior, and limits</h1>
+      <p class="subtitle">Use this page for common questions around file support, rendering quality, controls, and troubleshooting.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>General</h2>
+      <div class="faq-list">
+        <article class="faq-item">
+          <h3>Which file type is supported?</h3>
+          <p>Nexuslides currently targets .pptx files (Office Open XML format).</p>
+        </article>
+        <article class="faq-item">
+          <h3>Do I need an account?</h3>
+          <p>No account is required. Open the site and drop your deck to start rendering.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Can I use keyboard shortcuts?</h3>
+          <p>Yes. Use arrow keys for navigation, F for fullscreen toggle, and Esc to exit fullscreen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Rendering and fallback</h2>
+      <div class="faq-list">
+        <article class="faq-item">
+          <h3>Why does a deck look different from PowerPoint?</h3>
+          <p>Some advanced objects, effects, or custom components are interpreted differently by web renderers versus native Office apps.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What happens if parsing fails?</h3>
+          <p>Nexuslides automatically attempts fallback mode to extract readable slide text instead of failing silently.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Is there a file size limit?</h3>
+          <p>There is no hard product limit in the UI, but browser memory and device performance impact very large decks.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-panel">
+      <h2>Need to test with your own deck?</h2>
+      <p>Go back to the viewer and open a .pptx presentation locally.</p>
+      <div class="hero-actions">
+        <a class="btn-hero btn-primary" href="index.html">Launch Viewer</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Simple, local, and private presentation viewing in your browser.</p>
+    <p>&copy; <span id="year"></span> Nexuslides. Created by <a href="https://github.com/sultannurzhan" target="_blank" rel="noopener">Sultan Takibay</a></p>
+  </footer>
+
+  <script type="module" src="site.js"></script>
+</body>
+</html>

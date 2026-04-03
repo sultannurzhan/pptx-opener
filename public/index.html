@@ -15,14 +15,40 @@
 
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="home">
 
-  <header>
-    <h1>Nexuslides</h1>
-    <p class="subtitle">Open any PowerPoint file right in your browser — nothing uploaded, everything local.</p>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="index.html">Nexuslides</a>
+      <button id="navToggle" class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+        <a href="index.html" data-nav-page="home">Viewer</a>
+        <a href="how-it-works.html" data-nav-page="how">How It Works</a>
+        <a href="privacy.html" data-nav-page="privacy">Privacy</a>
+        <a href="faq.html" data-nav-page="faq">FAQ</a>
+      </nav>
+    </div>
   </header>
 
+  <section class="hero">
+    <div class="hero-shell">
+      <p class="eyebrow">Local-first PowerPoint Viewer</p>
+      <h1>Open .pptx presentations directly in your browser</h1>
+      <p class="subtitle">No upload queue, no backend, no waiting. Drop a deck and start presenting in seconds.</p>
+      <div class="hero-actions">
+        <a class="btn-hero btn-primary" href="#dropzone">Open a Presentation</a>
+        <a class="btn-hero btn-secondary" href="how-it-works.html">See the Pipeline</a>
+      </div>
+    </div>
+  </section>
+
   <main>
+    <section class="info-strip" aria-label="Key capabilities">
+      <div class="info-pill">100% Client-side Parsing</div>
+      <div class="info-pill">Presenter Controls + Thumbnails</div>
+      <div class="info-pill">Fallback Text Extraction</div>
+    </section>
+
     <!-- Drop zone / file picker -->
     <div id="dropzone" class="dropzone">
       <div class="dropzone-inner">
@@ -64,13 +90,35 @@
       <!-- Thumbnail strip: pptx2html can also render thumbs here -->
       <div id="thumbnailStrip" class="thumbnail-strip"></div>
     </div>
+
+    <section class="page-links" aria-label="Explore more pages">
+      <h2>Explore Nexuslides</h2>
+      <div class="link-grid">
+        <article class="link-card">
+          <h3>How It Works</h3>
+          <p>See exactly how JSZip and the patched pptx2html pipeline convert slides into browser-native content.</p>
+          <a href="how-it-works.html">Read the workflow</a>
+        </article>
+        <article class="link-card">
+          <h3>Privacy</h3>
+          <p>Understand what is processed locally, what telemetry exists, and how your presentation data stays on device.</p>
+          <a href="privacy.html">Open privacy page</a>
+        </article>
+        <article class="link-card">
+          <h3>FAQ</h3>
+          <p>Get quick answers about supported files, rendering limits, fallback mode, and best viewing experience.</p>
+          <a href="faq.html">Browse FAQs</a>
+        </article>
+      </div>
+    </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>Files never leave your device &mdash; everything runs locally in your browser.</p>
-    <p>Created with &hearts; by <a href="https://github.com/sultannurzhan" target="_blank" rel="noopener">Sultan Takibay</a></p>
+    <p>&copy; <span id="year"></span> Nexuslides. Created by <a href="https://github.com/sultannurzhan" target="_blank" rel="noopener">Sultan Takibay</a></p>
   </footer>
 
+  <script type="module" src="site.js"></script>
   <script type="module" src="app.js"></script>
 
   <script type="module">

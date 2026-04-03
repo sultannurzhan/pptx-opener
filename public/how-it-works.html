@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexuslides | How It Works</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="how">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="index.html">Nexuslides</a>
+      <button id="navToggle" class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+        <a href="index.html" data-nav-page="home">Viewer</a>
+        <a href="how-it-works.html" data-nav-page="how">How It Works</a>
+        <a href="privacy.html" data-nav-page="privacy">Privacy</a>
+        <a href="faq.html" data-nav-page="faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">Pipeline Overview</p>
+      <h1>How Nexuslides renders PowerPoint files in the browser</h1>
+      <p class="subtitle">Nexuslides is local-first by design. Your .pptx file is parsed in-memory and transformed into browser-native slides without leaving your device.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Rendering flow</h2>
+      <div class="steps">
+        <article class="step">
+          <strong>1. File intake</strong>
+          <p>Drag-and-drop or choose a .pptx file. The browser reads it with FileReader as an ArrayBuffer.</p>
+        </article>
+        <article class="step">
+          <strong>2. Package extraction</strong>
+          <p>JSZip unpacks OOXML parts from the presentation archive, including slide XML and embedded media.</p>
+        </article>
+        <article class="step">
+          <strong>3. Structured rendering</strong>
+          <p>A patched pptx2html engine maps positions, text styles, and layout semantics into generated slide markup.</p>
+        </article>
+        <article class="step">
+          <strong>4. Interactive viewer</strong>
+          <p>The viewer mounts slides with keyboard controls, thumbnail strip navigation, scaling, and fullscreen mode.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Fallback mode</h2>
+      <p>If a deck includes unsupported or deeply nested structures, Nexuslides switches to fallback mode and extracts slide text so the core information remains accessible.</p>
+      <div class="content-grid">
+        <article class="content-card">
+          <h3>Resilient output</h3>
+          <p>Instead of failing hard, fallback mode generates readable slide-by-slide text content.</p>
+        </article>
+        <article class="content-card">
+          <h3>Fast recovery path</h3>
+          <p>Users can still review deck content while preserving local-only processing behavior.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-panel">
+      <h2>Try it now</h2>
+      <p>Open the viewer and load a .pptx file to see the full pipeline in action.</p>
+      <div class="hero-actions">
+        <a class="btn-hero btn-primary" href="index.html">Open Viewer</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Files never leave your device and are processed locally in your browser.</p>
+    <p>&copy; <span id="year"></span> Nexuslides. Created by <a href="https://github.com/sultannurzhan" target="_blank" rel="noopener">Sultan Takibay</a></p>
+  </footer>
+
+  <script type="module" src="site.js"></script>
+</body>
+</html>
